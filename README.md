@@ -1,35 +1,69 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# KMPBook
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
-
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-### Build and Run Android Application
-
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
-
-### Build and Run iOS Application
-
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+Kotlin Multiplatform 기반 앱 프로젝트. Android / iOS 공통 코드베이스.
 
 ---
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## 앱 목록
+
+### 1. Body Fit MVP
+
+AI 기반 신체 치수 측정 도구.
+
+- 카메라로 촬영한 사진에서 ML Kit Pose Detection으로 어깨·힙 위치 자동 감지
+- 기준 물체(카드, A4 등) 대비 픽셀→cm 변환
+- 흉부·둔부 둘레 계산 및 한국식 의류 사이즈(44~99, 컵 사이즈) 추정
+- CameraX + Google ML Kit + Compose Multiplatform
+
+> 현재 코드베이스에서 제거됨. git 히스토리(`feat(app): initialize kotlin multiplatform android and ios applications`) 참고.
+
+---
+
+### 2. 급식
+
+NEIS 오픈 API를 이용한 학교 급식 조회 앱.
+
+- 학교 이름 검색 → 선택 저장
+- 날짜별 급식 메뉴 조회 (조식·중식·석식)
+- 열량 및 영양 정보 표시
+- 모노크롬 미니멀리즘 디자인
+
+**사용 API**: [NEIS 오픈 API](https://open.neis.go.kr) — `schoolInfo`, `mealServiceDietInfo`
+
+> API 키 없이도 하루 1000건까지 무료 호출 가능. 앱 내 "API 키" 버튼에서 입력.
+
+---
+
+## 프로젝트 구조
+
+```
+composeApp/
+  src/
+    commonMain/   # 공통 로직 및 UI (Compose Multiplatform)
+    androidMain/  # Android 전용 구현
+    iosMain/      # iOS 전용 구현
+iosApp/           # Xcode 프로젝트
+```
+
+## 빌드
+
+```shell
+# Android debug APK
+./gradlew :composeApp:assembleDebug
+
+# Android release APK
+./gradlew :composeApp:assembleRelease
+```
+
+iOS는 `/iosApp` 디렉토리를 Xcode에서 열어 실행.
+
+## 기술 스택
+
+| 항목 | 내용 |
+|------|------|
+| UI | Compose Multiplatform + Material3 |
+| HTTP | Ktor Client (OkHttp / Darwin) |
+| 직렬화 | kotlinx.serialization |
+| 날짜 | kotlinx-datetime |
+| 설정 저장 | multiplatform-settings |
+| 빌드 | Kotlin 2.3.20 / AGP 9.1.0 |
