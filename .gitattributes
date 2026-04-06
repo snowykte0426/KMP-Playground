@@ -1,0 +1,5 @@
+*.properties linguist-detectable=true
+*.yaml       linguist-detectable=true
+*.yml        linguist-detectable=true
+*.json       linguist-detectable=true
+*.md         linguist-detectable=true
