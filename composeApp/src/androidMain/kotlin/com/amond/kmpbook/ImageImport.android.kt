@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.graphics.scale
 
 @Composable
 actual fun rememberImageImportActions(): ImageImportActions {
@@ -83,10 +84,5 @@ private fun Bitmap.scaledDown(maxEdge: Int = 1600): Bitmap {
     val largest = maxOf(width, height)
     if (largest <= maxEdge) return this
     val scale = maxEdge.toFloat() / largest.toFloat()
-    return Bitmap.createScaledBitmap(
-        this,
-        (width * scale).toInt(),
-        (height * scale).toInt(),
-        true,
-    )
+    return this.scale((width * scale).toInt(), (height * scale).toInt())
 }

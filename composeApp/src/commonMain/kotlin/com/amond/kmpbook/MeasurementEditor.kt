@@ -7,7 +7,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -204,12 +203,11 @@ private fun calculateContentTransform(
     val imageRatio = imageWidth / imageHeight
     val containerRatio = containerWidth / containerHeight
     return if (imageRatio > containerRatio) {
-        val drawWidth = containerWidth
-        val drawHeight = drawWidth / imageRatio
+        val drawHeight = containerWidth / imageRatio
         ContentTransform(
             offsetX = 0f,
             offsetY = (containerHeight - drawHeight) / 2f,
-            drawWidth = drawWidth,
+            drawWidth = containerWidth,
             drawHeight = drawHeight,
             imageWidth = imageWidth,
             imageHeight = imageHeight,

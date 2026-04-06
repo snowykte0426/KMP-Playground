@@ -43,6 +43,7 @@ import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.PoseLandmark
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
+import androidx.core.graphics.scale
 
 @Composable
 actual fun PlatformCameraCapture(
@@ -344,10 +345,5 @@ private fun Bitmap.scaleDownIfNeeded(maxEdge: Int = 1600): Bitmap {
     val largest = maxOf(width, height)
     if (largest <= maxEdge) return this
     val scale = maxEdge.toFloat() / largest.toFloat()
-    return Bitmap.createScaledBitmap(
-        this,
-        (width * scale).toInt(),
-        (height * scale).toInt(),
-        true,
-    )
+    return this.scale((width * scale).toInt(), (height * scale).toInt())
 }

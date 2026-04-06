@@ -99,12 +99,12 @@ fun estimateMeasurementResult(
     return MeasurementResult(
         chestCircumferenceCm = chestCircumferenceCm,
         hipCircumferenceCm = hipCircumferenceCm,
-        bandSize = "${bandEstimate}",
+        bandSize = "$bandEstimate",
         koreanCupSize = "${bandEstimate}${cupSize}",
         topSize = topSize,
         bottomSize = bottomSize,
         confidenceLabel = confidence.toConfidenceLabel(),
-        summary = "${postureMode.label} 사진에서 기준 물체 비율과 단면 투영폭을 이용해 흉부 ${chestCircumferenceCm}cm, 둔부 ${hipCircumferenceCm}cm로 계산했습니다. 대략 ${bandEstimate}${cupSize}, 상의 ${topSize}, 하의 ${bottomSize} 기준입니다.",
+        summary = "${postureMode.label} 사진에서 기준 물체 비율과 단면 투영폭을 이용해 흉부 ${chestCircumferenceCm}cm, 둔부 ${hipCircumferenceCm}cm로 계산했습니다. 대략 ${bandEstimate}${cupSize}, 상의 ${topSize}, 하의 $bottomSize 기준입니다.",
     )
 }
 
