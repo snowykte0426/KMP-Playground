@@ -8,13 +8,13 @@ Kotlin Multiplatform 앱 프로젝트 (Android / iOS)
 
 <table>
 <tr>
-<td align="center" width="140">
-<img src="assets/body-fit-icon.svg" width="80" height="80" alt=""><br>
+<td style="text-align:center;padding:16px">
+<img src="assets/body-fit-icon.svg" width="80" height="80" alt="Body Fit MVP icon"><br>
 <b>Body Fit MVP</b><br>
-<sub>2025 · AI 신체 치수 측정</sub>
+<sub>2026 · AI 신체 치수 측정</sub>
 </td>
-<td align="center" width="140">
-<img src="assets/meal-icon.svg" width="80" height="80" alt=""><br>
+<td style="text-align:center;padding:16px">
+<img src="assets/meal-icon.svg" width="80" height="80" alt="급식 icon"><br>
 <b>급식</b><br>
 <sub>2026 · NEIS 급식 조회</sub>
 </td>
