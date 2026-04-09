@@ -6,13 +6,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
+import kotlinx.datetime.number
 import kotlinx.datetime.plus
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.todayIn
+import kotlin.time.Clock
 
 class MealViewModel : ViewModel() {
 
@@ -104,13 +106,13 @@ class MealViewModel : ViewModel() {
     }
 }
 
-private fun today(): LocalDate = Clock.System.todayIn(TimeZone.of("Asia/Seoul"))
+private fun today(): LocalDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
 
 fun LocalDate.toNeisFormat(): String =
-    "${year}${monthNumber.toString().padStart(2, '0')}${dayOfMonth.toString().padStart(2, '0')}"
+    "${year}${month.number.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}"
 
 fun LocalDate.toDisplayFormat(): String =
-    "${year}년 ${monthNumber}월 ${dayOfMonth}일"
+    "${year}년 ${month.number}월 ${day}일"
 
 fun LocalDate.toDayOfWeekKorean(): String = when (dayOfWeek.name) {
     "MONDAY" -> "월"

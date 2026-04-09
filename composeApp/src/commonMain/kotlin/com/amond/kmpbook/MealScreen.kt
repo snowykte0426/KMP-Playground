@@ -51,6 +51,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.number
 
 private val Black = Color(0xFF000000)
 private val White = Color(0xFFFFFFFF)
@@ -183,7 +184,7 @@ private fun MealHeader(
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = "${currentDate.monthNumber}월 ${currentDate.dayOfMonth}일",
+                    text = "${currentDate.month.number}월 ${currentDate.day}일",
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
                     color = Black,
